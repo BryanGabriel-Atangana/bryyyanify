@@ -90,14 +90,14 @@ const PromptCard = ({ prompt, handleEdit, handleDelete }) => {
             <motion.div whileHover={{ scale: 1.5, transition: 1 }}>
               <MdEdit size={20} color="#686868" />
             </motion.div>
-            <p className="font-inter text-sm green_gradient ">Edit</p>
+            <p className="font-inter text-sm green_gradient ">modifier</p>
           </div>
           <div className="flex flex-col cursor-pointer py-3 items-center justify-center">
             <motion.div whileHover={{ scale: 1.5, transition: 1 }}>
               <RiDeleteBin2Fill size={20} color="#686868" />
             </motion.div>
             <p className="font-inter text-sm orange_gradient cursor-pointer">
-              Delete
+              supprimer
             </p>
           </div>
         </div>
