@@ -1,4 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Stack
+
+Package Manager : Bun , Frontend and API : Next JS, Tailwing CSS, Next-Auth , DB : Mongoose, MongoDB
 
 ## Getting Started
 
