@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
 import Profile from "@components/Profile";
 
 const ProfilePage = () => {
@@ -10,7 +11,11 @@ const ProfilePage = () => {
 
   const [userPrompts, setUserPrompts] = useState([]);
 
-  const handleEdit = () => {};
+  const handleEdit = (prompt) => {
+    router.push(`/update-prompt?id=${prompt._id}`);
+    console.log(prompt);
+  };
+
   const handleDelete = () => {};
 
   useEffect(() => {

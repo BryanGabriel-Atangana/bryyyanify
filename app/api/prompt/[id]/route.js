@@ -2,7 +2,7 @@ import { connectToDB } from "@utils/db";
 import Prompt from "@models/prompt";
 
 // Get
-export const GET = async (req, { params }) => {
+export const GET = async (request, { params }) => {
   try {
     await connectToDB();
     const prompt = await Prompt.findById(params.id).populate("creator");
@@ -16,12 +16,12 @@ export const GET = async (req, { params }) => {
 };
 
 // Patch
-export const PATCH = async (req, { params }) => {
-  const { prompt, tag } = await req.json();
+export const PATCH = async (request, { params }) => {
+  const { prompt, tag } = await request.json();
 
   try {
     await connectToDB();
-    const existingPrompt = await Prompt.findById(params.id).populate("creator");
+    const existingPrompt = await Prompt.findById(params.id);
     if (!existingPrompt) {
       return new Response({ status: 404, message: "Prompt pas trouvé" });
     }

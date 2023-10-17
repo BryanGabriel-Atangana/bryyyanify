@@ -86,13 +86,19 @@ const PromptCard = ({ prompt, handleEdit, handleDelete }) => {
       </p>
       {session?.user?.id === prompt.creator._id && pathname === "/profile" && (
         <div className="flex flex-row gap-5 items-center justify-center">
-          <div className="flex flex-col cursor-pointer py-3 items-center justify-center">
+          <div
+            className="flex flex-col cursor-pointer py-3 items-center justify-center"
+            onClick={handleEdit}
+          >
             <motion.div whileHover={{ scale: 1.5, transition: 1 }}>
               <MdEdit size={20} color="#686868" />
             </motion.div>
             <p className="font-inter text-sm green_gradient ">modifier</p>
           </div>
-          <div className="flex flex-col cursor-pointer py-3 items-center justify-center">
+          <div
+            className="flex flex-col cursor-pointer py-3 items-center justify-center"
+            onClick={handleDelete}
+          >
             <motion.div whileHover={{ scale: 1.5, transition: 1 }}>
               <RiDeleteBin2Fill size={20} color="#686868" />
             </motion.div>
