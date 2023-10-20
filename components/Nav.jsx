@@ -5,14 +5,20 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { Borel } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const borel = Borel({ subsets: ["latin"], weight: "400" });
 
 const Nav = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
+
+  const returnToHome = () => {
+    router.push("/");
+  };
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -44,8 +50,14 @@ const Nav = () => {
           <Link href="/create-prompt" className="black_btn">
             <button>Créer</button>
           </Link>
-          <Link href="">
-            <button className="outline_btn" onClick={signOut}>
+          <Link href="/">
+            <button
+              className="outline_btn"
+              onClick={() => {
+                returnToHome();
+                signOut(true);
+              }}
+            >
               Déconnexion
             </button>
           </Link>
@@ -104,16 +116,19 @@ const Nav = () => {
                 >
                   Créer
                 </Link>
-                <button
-                  type="button"
-                  className="black_btn w-full"
-                  onClick={() => {
-                    setToggleDropDown(false);
-                    signOut(false);
-                  }}
-                >
-                  Déconnexion
-                </button>
+                <Link href="/">
+                  <button
+                    type="button"
+                    className="black_btn w-full"
+                    onClick={() => {
+                      setToggleDropDown(false);
+                      signOut(false);
+                      returnToHome();
+                    }}
+                  >
+                    Déconnexion
+                  </button>
+                </Link>
               </div>
             )}
           </div>

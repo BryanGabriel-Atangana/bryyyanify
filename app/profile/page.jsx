@@ -13,10 +13,25 @@ const ProfilePage = () => {
 
   const handleEdit = (prompt) => {
     router.push(`/update-prompt?id=${prompt._id}`);
-    console.log(prompt);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = async (prompt) => {
+    const hasConfirmed = confirm(
+      "Êtes-vous sûr de vouloir supprimer votre prompts ?"
+    );
+    try {
+      if (hasConfirmed) {
+        await fetch(`api/prompt/${prompt._id.toString()}`, {
+          method: "DELETE",
+        });
+        const filteredPrompts = userPrompts.filter((p) => p._id !== prompt._id);
+        setUserPrompts(filteredPrompts);
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Un erreur s'est produite lors de la suppression de votre prompt");
+    }
+  };
 
   useEffect(() => {
     const fetchUserPrompts = async () => {

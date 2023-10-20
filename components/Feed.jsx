@@ -42,7 +42,7 @@ const Feed = () => {
           onChange={handleSearchSubmit}
           type="text"
           className="search_input peer"
-          placeholder="Write a prompt"
+          placeholder="les meilleurs prompts c'est par ici"
           required
         />
       </form>
